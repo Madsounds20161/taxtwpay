@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title> [DEV] 報稅軟體WebToAp 交易通知 TV_EPAY_REQUEST Sample</title>
+<style type="text/css">
+<!--
+a:hover {
+	position: relative;
+	top: 1px;
+	left: 1px
+}
+-->
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="MSHTML 6.00.2800.1106" name=GENERATOR>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<meta http-equiv="PRAGMA" content="NO-CACHE">
+<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+<meta http-equiv="Expires" content="-1">
+</head>
+<script type="text/javascript" src="sha256.js"> </script>
+<script type="text/javascript" src="jquery-1.12.3.min.js"> </script>
+
+<script Language=JavaScript>
+	//頁面初始化 11
+	function init() {
+		var d = new Date();
+		//取得頁面元素
+		var varorderNumber = document.getElementById('orderNumber');
+		//取得訂單開始名稱
+		var intkind = 'QRP';               
+		var YYYY = d.getFullYear().toString();
+		var MM = padZero((d.getMonth() + 1).toString()); // getMonth() is zero-based
+		var DD = padZero(d.getDate().toString());
+		var hh = padZero(d.getHours().toString());
+		var mm = padZero(d.getMinutes().toString());
+		var ss = padZero(d.getSeconds().toString());
+	//	varorderNumber.value = intkind + YYYY.substr(2) + MM + DD + hh + mm + ss;
+	//	varorderNumber.value = varorderNumber.value.substr(0, 19);
+		
+		
+		//確認有console物件可以使用
+	//	if (console != undefined) {
+	//		console.log('varorderNumber is ' + varorderNumber.value);
+	//	}
+	}
+	//補零
+	function padZero(strValue) {
+		if (strValue.length == 1) {
+			strValue = '0' + strValue;
+		}
+		return strValue;
+	}
+	function doSubmit(btn) {
+		//calculateReqToken();
+
+		var frm = document.forms[0];
+		//var exeEnv = document.getElementById('exeEnv').value;
+		//var strUrl = exeEnv + '/FOCAS_WS/API20/QRP/V2/WebToAppReq/';
+		//https://www.focas-test.fisc.com.tw/FOCAS_WS/API20/QRP/V2/WebToAppReq/
+		//frm.action = strUrl;
+		frm.submit();
+	}
+	
+</script>
+<body bgColor=#ffffff background="bg.gif" text=#000000 leftmargin="0" topMargin="0" marginwidth="10"
+	marginheight="0" onload='init()'>
+	<table width="800" height=100% border=0 cellPadding=0 cellSpacing=0 align=center>
+		<tr>
+
+			<td width="538" height="75" align="right" vAlign=bottom background=bg_top_1.jpg><block></td>
+		</tr>
+		<tr bgcolor="#003366">
+			<td height="5" colspan="2"><block></td>
+		</tr>
+		<tr align="center" valign="top" bgcolor="#FFFFFF">
+			<td width=100% colspan=2><br>
+
+				<table cellSpacing=0 cellPadding=8 width=520 border=0>
+					<tr>
+						<td>
+							<form id="pay_form" name="pay_form" method=post action="https://mobiletest.hncb.com.tw/uat/wcs/mtp/epay/request">
+                                                         <!--<form id="pay_form" name="pay_form" method=post action="https://www.focas-test.fisc.com.tw/DEV_FOCAS_WS/API20/QRP/V2/WebToAppReq/">-->
+                                                                      
+
+								<table width=100% cellspacing=1 cellpadding=5 border=0 bgcolor=#999999>
+									<tr bgcolor=#ffa87d>
+										<td bgcolor=#AEDCFF class=c-13><strong> [DEV] TAX 交易通知 TV_EPAY_REQUEST Sample </strong></td>
+									</tr>
+									<tr>
+										<td width=100%>
+											<table width=100% border=0 align=center cellpadding=5 cellspacing=1 class=c-13>
+												<tr bgcolor="#FFFFFF">
+													<td width=100%>paymentType：<input type=text id="paymentType" name=paymentType value="15001" >
+													</td>
+												</tr>
+												<tr bgcolor="#FFFFFF">
+													<td width=100%>tax：<input type=text id="tax" name=tax value="irxw" >
+													</td>
+												</tr>
+												<tr bgcolor="#FFFFFF">
+													<td width=100%>seqNo：<input type=text  id="seqNo"  name=seqNo value="0000000001" >
+													</td>
+												</tr>
+												<tr bgcolor="#FFFFFF">
+													<td width=100%>txnAmount：<input type=text id="txnAmount" name=txnAmount value="0000000010" >
+													</td>
+												</tr>
+
+											</table>
+										</td>
+									</tr>
+									<tr bgcolor="#AEDCFF">
+										<td align=middle><input type='button' value="Pay" border=0 name=imageField
+											width="161" height="32" onclick='doSubmit(this)'></td>
+									</tr>
+								</table>
+							</form>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
